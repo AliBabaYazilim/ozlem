@@ -1,1 +1,128 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seni Çok Özledim...</title>
+    <style>
+        /* Genel Sayfa Ayarları */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #4a4a4a;
+            overflow: hidden;
+        }
+
+        /* Kart Tasarımı */
+        .card {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        /* Kalp Animasyonu */
+        .heart {
+            font-size: 60px;
+            color: #ff477e;
+            margin-bottom: 20px;
+            animation: beat 1.2s infinite;
+            display: inline-block;
+        }
+
+        /* Başlık ve Yazılar */
+        h1 {
+            font-size: 2.2rem;
+            color: #ff477e;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            color: #5c5c5c;
+        }
+
+        /* Küçük Not Alanı */
+        .sub-text {
+            font-size: 0.9rem;
+            font-style: italic;
+            color: #a3a3a3;
+        }
+
+        /* Animasyon Tanımlamaları */
+        @keyframes beat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Arka Plandaki Küçük Kalp Efektleri */
+        .bg-heart {
+            position: absolute;
+            color: rgba(255, 71, 126, 0.15);
+            font-size: 20px;
+            pointer-events: none;
+            animation: float 6s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="heart">❤️</div>
+        <h1>Seni Çok Özledim</h1>
+        <p>
+            Zaman sen yanımdayken su gibi akıp gidiyor, sen yokken ise bir saniye bile geçmek bilmiyor. 
+            Gülüşünü, sesini ve seninle olan her anı şimdiden çok özledim. 
+            En kısa zamanda yeniden yan yana olmak dileğiyle...
+        </p>
+        <div class="sub-text">Bu sayfa tamamen seni düşünen biri tarafından yapıldı. ✨</div>
+    </div>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('bg-heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 4 + 's';
+            heart.style.fontSize = Math.random() * 15 + 15 + 'px';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+        // Her 800 milisaniyede bir yeni kalp oluştur
+        setInterval(createHeart, 800);
+    </script>
+
+</body>
+</html>
